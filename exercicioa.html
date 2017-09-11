@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<script type="text/javascript" src="./jquery.min.js"></script>
+		<script>
+			$(function () {
+				var TAM_MAX = 140;
+				$("#tamanho").text(TAM_MAX);
+				$("textarea").keyup(function(){
+
+					var caracter = $(this).val();
+					$("#tamanho").text(TAM_MAX - caracter.length);
+
+					if(TAM_MAX - caracter.length <=0){
+						alert("Quantidade máxima atingida, amiguinho!");
+					}
+					var quantidade = caracter.length;
+					palavraArray = caracter.split(" ");
+
+					var palavras = palavraArray.length;
+
+					var crcsemespaco = (caracter.length) - (palavras-1);
+
+					$("#ncc")
+						.text("Caracteres que tem espaços:" + quantidade);
+					$("#ncs")
+						.text("Caracteres que não tem espaços:" + crcsemespaco);
+					$("#np")
+						.text("Palavras:" + palavras)						
+				});
+			});
+		</script>
+	</head>
+	<body>
+
+	<textarea maxlength="140" id="msg" style="width: 800px; height: 200px"> </textarea>
+	<br/>
+	<span id="tamanho"></span>
+	<button  id="but">Enviar</button>
+	<p id="ctg"> </p>
+	<p id="ncc">Número de caracteres com espaço: </p>
+	<p id="ncs">Número de caracteres sem espaço: </p>
+	<p id="np">Número de palavras:</p>
+	<p id="pc">Palavras mais comum: </p>
+
+	</body>
+</html>
